@@ -1,0 +1,21 @@
+The implementation of an algorithm to identify the language of a given text is inspired by 'N-Gram-Based Text Categorization' by William Cavnar and John Trenkle. The dataset used is taken from https://tatoeba.org/. The code at present creates a dictionary using 5 languages - deu (German), eng (English), fra (French), spa (Spanish) and ita (Italian). It can be easily extended to include more languages.
+
+For each language, around 25000 sentences are used to train the model. The text is cleaned and parsed, and the frequencies of words is calculated using FreqDist of python. The top 10000 most frequest ngrams are stored in a dictionary ('language_dictionary' in the data folder), in decreasing order of number of occurences of ngrams.
+
+identifylanguage.py applies the same technique to the input text - cleaning, parsing and ordering by word frequency. ngrams of the input file are compared with ngrams for all languages. A similarity (distance) is calculated and the language with the least distance (most similarity) is the predicted language.
+
+Implementation:
+
+First the dictionary must be created, hence the first command to be executed is -
+
+python3 main.py prepare_data
+
+After the preprocessing is done, the following command can be run -
+
+python3 main.py identify_language
+
+This will give a prompt to enter the path of the text file containing the input text. Sample text files have been provided and can be used for this purpose.
+
+Enter the path of the text file for which the language is to be identified: ./french
+
+Any other file can be used, provided the path is provided correctly.
